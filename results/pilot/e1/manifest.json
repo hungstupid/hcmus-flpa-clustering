@@ -1,0 +1,118 @@
+{
+  "schema_version": 1,
+  "plan": {
+    "experiment_id": "e1",
+    "experiment_type": "runtime",
+    "profile": "pilot",
+    "algorithms": [
+      "lpa",
+      "retention_lpa",
+      "flpa",
+      "leiden"
+    ],
+    "cases": [
+      {
+        "case_id": "er-1000-d10",
+        "dataset": "er",
+        "n_nodes": 1000,
+        "average_degree": 10,
+        "mixing_mu": null,
+        "n_communities": null
+      },
+      {
+        "case_id": "er-5000-d10",
+        "dataset": "er",
+        "n_nodes": 5000,
+        "average_degree": 10,
+        "mixing_mu": null,
+        "n_communities": null
+      },
+      {
+        "case_id": "ba-1000-d10",
+        "dataset": "ba",
+        "n_nodes": 1000,
+        "average_degree": 10,
+        "mixing_mu": null,
+        "n_communities": null
+      },
+      {
+        "case_id": "ba-5000-d10",
+        "dataset": "ba",
+        "n_nodes": 5000,
+        "average_degree": 10,
+        "mixing_mu": null,
+        "n_communities": null
+      },
+      {
+        "case_id": "sbm-1000-d10-mu0.6",
+        "dataset": "sbm",
+        "n_nodes": 1000,
+        "average_degree": 10,
+        "mixing_mu": 0.6,
+        "n_communities": 100
+      },
+      {
+        "case_id": "sbm-5000-d10-mu0.6",
+        "dataset": "sbm",
+        "n_nodes": 5000,
+        "average_degree": 10,
+        "mixing_mu": 0.6,
+        "n_communities": 100
+      }
+    ],
+    "seed_pairs": [
+      [
+        31001,
+        21001
+      ],
+      [
+        31002,
+        21002
+      ],
+      [
+        31003,
+        21003
+      ]
+    ],
+    "timeout_seconds": 90
+  },
+  "environment": {
+    "utc_time": "2026-11-23T12:14:59.780860+00:00",
+    "os": "macOS-14.6.1-arm64-arm-64bit",
+    "arch": "arm64",
+    "logical_cpus": 8,
+    "cpu_model": "Apple M1",
+    "memory_bytes": "8589934592",
+    "thread_environment": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1"
+    },
+    "python": "3.12.15",
+    "packages": {
+      "numpy": "2.0.2",
+      "scipy": "1.13.1",
+      "scikit-learn": "1.6.1",
+      "networkx": "3.2.1",
+      "pandas": "2.2.3",
+      "igraph": "0.11.9",
+      "leidenalg": "0.10.2",
+      "matplotlib": "3.9.4",
+      "marimo": "0.13.15",
+      "wandb": "0.19.11"
+    },
+    "source_commit": "9fd916a4a284bed17618f0006064a49b8a157447",
+    "source_changes": ""
+  },
+  "counts": {
+    "ok": 72
+  },
+  "sha256": {
+    "figures/runtime.pdf": "e9dcc2c958d7417e7753305a35fd38d1359c4c823f5d8d9da87db97f6221bc13",
+    "figures/runtime.png": "8d56d18b3efe62ac0cf72295a76be14aed37478b49225d523234fab13c9b04c9",
+    "figures/work.pdf": "ba7fdc4b59aa43bdfd34328ba34a9e2e056fba010fb3c15a4b8d63ef2999cdfa",
+    "figures/work.png": "b3f52ddb8c5d240344ac8e3f23b8f63e7286c3b1df1a921f3ae054615ca5a23a",
+    "paired.csv": "de6b0e7718695f0f2bf50ad7b40f44687f53f6b32435f2767ee1cb4ff5761bf8",
+    "raw.csv": "b338276b03a5502cca3918c4db0ea306552f16d2d4132dc7b4d88467e81f41cc",
+    "summary.csv": "f2e1cab004398798e3379e1eb3fb7fb52dfd99ae444b47fff145a5b9ffddcc77"
+  }
+}

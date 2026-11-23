@@ -1,0 +1,39 @@
+\documentclass[conference]{IEEEtran}
+\usepackage[utf8]{inputenc}
+\usepackage[T5]{fontenc}
+\usepackage[english,vietnamese]{babel}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,booktabs,graphicx,microtype}
+\usepackage{algpseudocode}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning}
+\usepackage[hidelinks]{hyperref}
+\graphicspath{{../results/e1/figures/}{../results/e3/figures/}}
+
+\newcommand{\NMI}{\mathrm{NMI}}
+\newcommand{\ARI}{\mathrm{ARI}}
+\newcommand{\ACC}{\mathrm{ACC}}
+\input{tables}
+
+\title{Tái hiện phương pháp lan truyền nhãn nhanh để phát hiện cộng đồng trên đồ thị\\
+\large Bản nháp Track B (TV1)}
+\author{\IEEEauthorblockN{Đồ án Khai thác dữ liệu}
+\IEEEauthorblockA{Trường Đại học Khoa học Tự nhiên, ĐHQG-HCM}}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+Lan truyền nhãn nhanh (Fast Label Propagation, FLPA) của Traag và Šubelj chuyển từ quét toàn bộ đồ thị sang hàng đợi các đỉnh cần đánh giá lại. Công trình này tự cài đặt lan truyền nhãn bất đồng bộ, lan truyền nhãn giữ nhãn hiện tại và FLPA từ mô tả toán học. Chúng tôi chứng minh bằng bất biến rằng khi hàng đợi cạn, nhãn của mỗi đỉnh có láng giềng đạt tần suất cực đại trong vùng kề. Thực nghiệm E1 đo thời gian và số lượt xử lý trên ba họ đồ thị tổng hợp, với 1.000 đến 100.000 đỉnh mỗi họ. Mỗi cấu hình có 10 cặp seed. Chúng tôi dùng Leiden tối ưu modularity làm đối chứng và đối chiếu các phép đo Python với Figure~1 và nhánh igraph C của tác giả. E3 thay riêng thứ tự lấy đỉnh hoặc điều kiện đưa lại láng giềng. Trên SBM 5.000 đỉnh ở ba mức trộn, LIFO có thời gian trung bình ghép cặp gấp 2,45–4,82 lần FIFO. Ở mức trộn cao nhất, LIFO quy về một cụm ở cả 10 lần dù mọi nhãn cuối đều cực đại cục bộ. Kết quả cho thấy việc chọn lịch xử lý ảnh hưởng cả thời gian lẫn cấu trúc tìm được. Bản nháp trình bày E1 và E3 của TV1. Phân tích Figure~4 và dữ liệu mới thuộc E2 và E4 của TV2.
+\end{abstract}
+\begin{IEEEkeywords}
+lan truyền nhãn, phát hiện cộng đồng, đồ thị, SBM, tái hiện thực nghiệm
+\end{IEEEkeywords}
+
+\input{sections/introduction}
+\input{sections/methods}
+\input{sections/critical_analysis}
+\input{sections/experiments}
+\input{sections/conclusion}
+\bibliographystyle{IEEEtran}
+\bibliography{references}
+\end{document}

@@ -1,0 +1,218 @@
+{
+  "schema_version": 1,
+  "plan": {
+    "experiment_id": "e1",
+    "experiment_type": "runtime",
+    "profile": "main",
+    "algorithms": [
+      "lpa",
+      "retention_lpa",
+      "flpa",
+      "leiden"
+    ],
+    "cases": [
+      {
+        "case_id": "er-1000-d10",
+        "dataset": "er",
+        "n_nodes": 1000,
+        "average_degree": 10,
+        "mixing_mu": null,
+        "n_communities": null
+      },
+      {
+        "case_id": "er-5000-d10",
+        "dataset": "er",
+        "n_nodes": 5000,
+        "average_degree": 10,
+        "mixing_mu": null,
+        "n_communities": null
+      },
+      {
+        "case_id": "er-10000-d10",
+        "dataset": "er",
+        "n_nodes": 10000,
+        "average_degree": 10,
+        "mixing_mu": null,
+        "n_communities": null
+      },
+      {
+        "case_id": "er-50000-d10",
+        "dataset": "er",
+        "n_nodes": 50000,
+        "average_degree": 10,
+        "mixing_mu": null,
+        "n_communities": null
+      },
+      {
+        "case_id": "er-100000-d10",
+        "dataset": "er",
+        "n_nodes": 100000,
+        "average_degree": 10,
+        "mixing_mu": null,
+        "n_communities": null
+      },
+      {
+        "case_id": "ba-1000-d10",
+        "dataset": "ba",
+        "n_nodes": 1000,
+        "average_degree": 10,
+        "mixing_mu": null,
+        "n_communities": null
+      },
+      {
+        "case_id": "ba-5000-d10",
+        "dataset": "ba",
+        "n_nodes": 5000,
+        "average_degree": 10,
+        "mixing_mu": null,
+        "n_communities": null
+      },
+      {
+        "case_id": "ba-10000-d10",
+        "dataset": "ba",
+        "n_nodes": 10000,
+        "average_degree": 10,
+        "mixing_mu": null,
+        "n_communities": null
+      },
+      {
+        "case_id": "ba-50000-d10",
+        "dataset": "ba",
+        "n_nodes": 50000,
+        "average_degree": 10,
+        "mixing_mu": null,
+        "n_communities": null
+      },
+      {
+        "case_id": "ba-100000-d10",
+        "dataset": "ba",
+        "n_nodes": 100000,
+        "average_degree": 10,
+        "mixing_mu": null,
+        "n_communities": null
+      },
+      {
+        "case_id": "sbm-1000-d10-mu0.6",
+        "dataset": "sbm",
+        "n_nodes": 1000,
+        "average_degree": 10,
+        "mixing_mu": 0.6,
+        "n_communities": 100
+      },
+      {
+        "case_id": "sbm-5000-d10-mu0.6",
+        "dataset": "sbm",
+        "n_nodes": 5000,
+        "average_degree": 10,
+        "mixing_mu": 0.6,
+        "n_communities": 100
+      },
+      {
+        "case_id": "sbm-10000-d10-mu0.6",
+        "dataset": "sbm",
+        "n_nodes": 10000,
+        "average_degree": 10,
+        "mixing_mu": 0.6,
+        "n_communities": 100
+      },
+      {
+        "case_id": "sbm-50000-d10-mu0.6",
+        "dataset": "sbm",
+        "n_nodes": 50000,
+        "average_degree": 10,
+        "mixing_mu": 0.6,
+        "n_communities": 100
+      },
+      {
+        "case_id": "sbm-100000-d10-mu0.6",
+        "dataset": "sbm",
+        "n_nodes": 100000,
+        "average_degree": 10,
+        "mixing_mu": 0.6,
+        "n_communities": 100
+      }
+    ],
+    "seed_pairs": [
+      [
+        31001,
+        21001
+      ],
+      [
+        31002,
+        21002
+      ],
+      [
+        31003,
+        21003
+      ],
+      [
+        31004,
+        21004
+      ],
+      [
+        31005,
+        21005
+      ],
+      [
+        31006,
+        21006
+      ],
+      [
+        31007,
+        21007
+      ],
+      [
+        31008,
+        21008
+      ],
+      [
+        31009,
+        21009
+      ],
+      [
+        31010,
+        21010
+      ]
+    ],
+    "timeout_seconds": 90
+  },
+  "environment": {
+    "utc_time": "2026-11-23T11:30:10.342101+00:00",
+    "os": "macOS-14.6.1-arm64-arm-64bit",
+    "arch": "arm64",
+    "logical_cpus": 8,
+    "cpu_model": "Apple M1",
+    "memory_bytes": "8589934592",
+    "thread_environment": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1"
+    },
+    "python": "3.12.15",
+    "packages": {
+      "numpy": "2.0.2",
+      "scipy": "1.13.1",
+      "scikit-learn": "1.6.1",
+      "networkx": "3.2.1",
+      "pandas": "2.2.3",
+      "igraph": "0.11.9",
+      "leidenalg": "0.10.2",
+      "matplotlib": "3.9.4",
+      "marimo": "0.13.15",
+      "wandb": "0.19.11"
+    },
+    "source_commit": "8d5bbb93c97fb69821c23876981a921c4ec6b6f7",
+    "source_changes": ""
+  },
+  "counts": {
+    "ok": 600
+  },
+  "sha256": {
+    "figures/runtime.pdf": "94ece067e35085291c2ba48eccc953df9f9ef309a050658311a55da8843ac212",
+    "figures/runtime.png": "f374b841669ea0e4d6259d5fa91989d572af8414edcc13876f16b1ca74d2be16",
+    "figures/work.pdf": "e0a03975f87bdd3684a2df200a00ff6cba8938482a6cf3a35b612372b0d4fe08",
+    "figures/work.png": "5c7452c5ebe736ee4ecc471d2730de4b9aca2d665e60b7f212fa657eb96b964a",
+    "paired.csv": "7aef66b8368632de5d08377c020c64cdd9fe04d9ca55515eb858c9745a173e10",
+    "raw.csv": "fecc1ae6733b7c99b12e89c08dd278e8678e891f2f3765609ddd196b1b2f338c",
+    "summary.csv": "0dcc3cad3b2573db1b4166cee45fe652cd312596c49c75c53d17b7488ad084bc"
+  }
+}

@@ -1,0 +1,16 @@
+\section{Phân tích phê bình}
+
+\subsection{Điểm mạnh}
+Thứ nhất, FLPA làm một thay đổi cục bộ dễ phân tích. Điều kiện chỉ đưa lại các láng giềng có nhãn khác xuất phát trực tiếp từ bất biến ở Mục~\ref{sec:methods}. Điều này cho phép lý giải phần nào của chi phí đã giảm, qua lượt lấy đỉnh và độ dài quét. Thứ hai, đầu vào chỉ cần topology, vì vậy cùng hiện thực có thể chạy từ mạng tổng hợp đến dữ liệu thực mà không biết trước số nhóm. Thứ ba, bài báo tách hai câu hỏi tốc độ và chất lượng, dùng cả đồ thị có nhãn cài sẵn và mạng có nhãn xã hội, đồng thời báo cáo số nhóm và độ ổn định. Điều này quan trọng vì thời gian thấp có thể đi chung với quá trình dừng sớm ở phân hoạch mịn hoặc với việc gộp cả khối.
+
+Phân tích clique và star của tác giả còn cung cấp các ca kiểm thử có thể dự đoán trước kết quả. Trên star, láng giềng duy nhất của mỗi lá buộc lá cùng nhãn với tâm khi đã hội tụ. Trên clique, nhãn của một cộng đồng nhỏ gặp nhiều phiếu hộ cộng đồng lớn nhất hơn phiếu cho chính mình, trừ khi chúng đã ở một cụm duy nhất. Đồ thị vòng lại cho nhiều phân hoạch maximal vì đỉnh biên có thể thấy hai nhãn hoà nhau. Kiểm thử theo cấu trúc giúp phân biệt tính đúng của cài đặt với mức phù hợp của một phân hoạch cụ thể.
+
+\subsection{Hạn chế và giả định}
+Maximality là yêu cầu ổn định một đỉnh. Phân hoạch một cụm thoả bất biến với mọi đồ thị liên thông và vẫn có thể che lấp nhiều nhóm thật. Nếu mạng có các hub làm cầu nối, phiếu phổ biến từ chúng có thể khuếch đại một nhãn. Retention chỉ tránh đổi trong thế hoà và vì thế có thể làm tăng số nhóm nhỏ. Nghiệm cụ thể nhạy với seed và bộ sinh số ngẫu nhiên. Những hạn chế này được quan sát lại trong E1 và E3 bằng số cụm, ARI và ACC.
+
+Phân tích chi phí của bài báo trên các đồ thị đặc biệt cung cấp trực giác về số lượt xử lý. Trên họ đồ thị có hub, một lần đổi nhãn ở hub có thể đưa nhiều đỉnh trở lại hàng đợi dù mỗi thao tác thêm hoặc lấy là $O(1)$. Tỷ lệ tăng tốc trên C và mạng thực của tác giả phụ thuộc vào cấu trúc đồ thị và cách cài đặt. Việc dùng các panel Figure~1 với kích thước và bậc đích trùng giúp so sánh xu hướng. Các cạnh thực tế, nền phần cứng và ngân sách lặp là ba nguồn sai lệch còn lại. Đo trên cùng topology bằng nhánh C của tác giả giữ cố định được yếu tố đồ thị.
+
+Quy tắc bỏ phiếu giả định cạnh là bằng chứng cộng đồng. Mạng có hướng có thể cần phân biệt gửi và nhận. Trọng số liên kết có thể đo cường độ hoặc độ tin cậy thay vì tần suất. Các đồ thị tổng hợp của chúng tôi là vô hướng, đơn và dùng nhiều nhất một nhãn mỗi đỉnh. Nhiều mạng thực có phân cấp hoặc thành viên tham gia nhiều nhóm. Nhãn phòng ban trong email-Eu-core~\cite{snap,yin} đo liên kết với tổ chức, nên phân chia hành chính và cấu trúc trao đổi có thể lệch nhau. E4 của TV2 sẽ kiểm tra trực tiếp phần này.
+
+\subsection{Hướng nghiên cứu}
+Đầu tiên, có thể phân tầng độ nhạy theo degree và mu, đồng thời chạy nhiều algorithm seed trên từng topology cố định. Thiết kế lồng nhau ước lượng riêng biến thiên từ dữ liệu và từ lịch xử lý. Theo dõi phân phối requeue ở hub có thể giải thích vì sao hai đồ thị với cùng số cạnh lại có runtime khác nhau. Thứ hai, có thể dùng phân hoạch FLPA làm điểm khởi đầu của Leiden và đo cả chi phí tổng hợp lẫn ARI hoặc ACC. Khi thử trên dữ liệu có hướng, nên đối chiếu phép hợp cạnh vô hướng với mục tiêu dùng chiều gửi nhận và phân tích độ thay đổi cụm theo từng quy tắc biểu diễn.
