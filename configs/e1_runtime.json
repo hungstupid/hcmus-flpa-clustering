@@ -1,0 +1,21 @@
+{
+  "experiment_id": "e1",
+  "experiment_type": "runtime",
+  "algorithms": ["lpa", "retention_lpa", "flpa", "leiden"],
+  "timeout_seconds": 90,
+  "graph_seed_start": 31001,
+  "algorithm_seed_start": 21001,
+  "scenarios": [
+    {"dataset": "er", "sizes": [1000, 5000, 10000, 50000, 100000], "average_degree": 10},
+    {"dataset": "ba", "sizes": [1000, 5000, 10000, 50000, 100000], "average_degree": 10},
+    {"dataset": "sbm", "sizes": [1000, 5000, 10000, 50000, 100000], "average_degree": 10,
+     "n_communities": 100, "mixing_values": [0.6]}
+  ],
+  "profiles": {
+    "smoke": {"repeats": 1, "sizes": [1000]},
+    "pilot": {"repeats": 3, "sizes": [1000, 5000]},
+    "main": {"repeats": 10},
+    "reference": {"repeats": 3, "sizes": [10000, 100000],
+                  "algorithms": ["lpa", "retention_lpa", "flpa"]}
+  }
+}

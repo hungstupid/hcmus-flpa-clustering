@@ -1,0 +1,17 @@
+{
+  "experiment_id": "e3",
+  "experiment_type": "ablation",
+  "algorithms": ["flpa", "flpa_lifo", "flpa_all"],
+  "timeout_seconds": 30,
+  "graph_seed_start": 41001,
+  "algorithm_seed_start": 51001,
+  "scenarios": [
+    {"dataset": "sbm", "sizes": [5000], "average_degree": 10,
+     "n_communities": 100, "mixing_values": [0.3, 0.45, 0.6]}
+  ],
+  "profiles": {
+    "smoke": {"repeats": 1, "sizes": [1000], "mixing_values": [0.45]},
+    "pilot": {"repeats": 3},
+    "main": {"repeats": 10}
+  }
+}
