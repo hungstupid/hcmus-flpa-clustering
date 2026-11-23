@@ -1,0 +1,22 @@
+dataset,n_nodes,algorithm,panel,mean_seconds_approx
+er,50000,lpa,ER scaling,1.85
+er,50000,retention_lpa,ER scaling,0.10
+er,50000,flpa,ER scaling,0.85
+er,50000,leiden,ER scaling,1.55
+er,100000,flpa,ER scaling,2.65
+er,100000,retention_lpa,ER scaling,0.35
+ba,50000,lpa,BA scaling,0.75
+ba,50000,retention_lpa,BA scaling,0.15
+ba,50000,flpa,BA scaling,0.35
+ba,50000,leiden,BA scaling,1.80
+ba,100000,lpa,BA scaling,2.25
+ba,100000,retention_lpa,BA scaling,0.35
+ba,100000,flpa,BA scaling,1.00
+sbm,50000,lpa,SBM scaling mu=0.6,1.75
+sbm,50000,retention_lpa,SBM scaling mu=0.6,0.15
+sbm,50000,flpa,SBM scaling mu=0.6,0.80
+sbm,50000,leiden,SBM scaling mu=0.6,1.25
+sbm,100000,lpa,SBM mixing n=100000 mu=0.6,5.80
+sbm,100000,retention_lpa,SBM mixing n=100000 mu=0.6,0.35
+sbm,100000,flpa,SBM mixing n=100000 mu=0.6,2.70
+sbm,100000,leiden,SBM mixing n=100000 mu=0.6,4.35
