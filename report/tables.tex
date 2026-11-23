@@ -1,0 +1,71 @@
+% Sinh bởi scripts/report_tables.py từ CSV.
+\newcommand{\EoneTable}{%
+\begin{tabular}{llrrr}
+\toprule
+Họ & Thuật toán & Giây & Lượt/đỉnh & Cụm \\
+\midrule
+BA & FLPA FIFO & $5.223\pm1.672$ & $9.6$ & $1.0$ \\
+BA & Leiden & $27.386\pm6.472$ & -- & $21.9$ \\
+BA & LPA & $6.679\pm2.780$ & $15.7$ & $1.0$ \\
+BA & Retention-LPA & $1.738\pm0.514$ & $4.3$ & $27403.4$ \\
+ER & FLPA FIFO & $6.435\pm0.765$ & $29.8$ & $6.3$ \\
+ER & Leiden & $12.531\pm2.570$ & -- & $27.1$ \\
+ER & LPA & $10.190\pm4.980$ & $44.3$ & $6.3$ \\
+ER & Retention-LPA & $0.831\pm0.149$ & $4.0$ & $31146.7$ \\
+SBM & FLPA FIFO & $16.394\pm4.953$ & $32.8$ & $5.8$ \\
+SBM & Leiden & $31.046\pm12.829$ & -- & $20.4$ \\
+SBM & LPA & $23.648\pm13.024$ & $43.2$ & $5.7$ \\
+SBM & Retention-LPA & $2.373\pm1.147$ & $4.7$ & $31029.0$ \\
+\bottomrule
+\end{tabular}}
+\newcommand{\EthreeTable}{%
+\begin{tabular}{rlrrrrrrr}
+\toprule
+$\mu$ & Biến thể & Giây & Lượt & Đổi nhãn & NMI & ARI & ACC & Cụm \\
+\midrule
+$0.30$ & FLPA FIFO & $0.029\pm0.001$ & $18293$ & $9416$ & $0.990\pm0.003$ & $0.972\pm0.011$ & $0.966\pm0.016$ & $108.7$ \\
+$0.30$ & FIFO toàn bộ & $0.032\pm0.001$ & $21681$ & $9448$ & $0.991\pm0.002$ & $0.977\pm0.006$ & $0.973\pm0.009$ & $106.4$ \\
+$0.30$ & FLPA LIFO & $0.070\pm0.003$ & $43296$ & $18482$ & $0.994\pm0.002$ & $0.982\pm0.010$ & $0.985\pm0.011$ & $100.2$ \\
+$0.45$ & FLPA FIFO & $0.042\pm0.002$ & $26258$ & $11430$ & $0.961\pm0.005$ & $0.903\pm0.016$ & $0.916\pm0.019$ & $115.1$ \\
+$0.45$ & FIFO toàn bộ & $0.044\pm0.002$ & $28964$ & $11385$ & $0.958\pm0.004$ & $0.901\pm0.011$ & $0.915\pm0.012$ & $117.6$ \\
+$0.45$ & FLPA LIFO & $0.183\pm0.008$ & $111890$ & $42121$ & $0.967\pm0.005$ & $0.911\pm0.038$ & $0.939\pm0.017$ & $105.6$ \\
+$0.60$ & FLPA FIFO & $0.086\pm0.008$ & $53534$ & $21036$ & $0.073\pm0.231$ & $0.043\pm0.136$ & $0.072\pm0.195$ & $12.4$ \\
+$0.60$ & FIFO toàn bộ & $0.101\pm0.015$ & $64768$ & $21174$ & $0.077\pm0.242$ & $0.050\pm0.158$ & $0.076\pm0.210$ & $13.4$ \\
+$0.60$ & FLPA LIFO & $0.410\pm0.066$ & $222809$ & $95197$ & $0.000\pm0.000$ & $0.000\pm0.000$ & $0.010\pm0.000$ & $1.0$ \\
+\bottomrule
+\end{tabular}}
+\newcommand{\PaperTable}{%
+\begin{tabular}{llrrr}
+\toprule
+Họ & Thuật toán & Paper (s) & Python (s) & $\Delta$ (\%) \\
+\midrule
+ER & LPA & $1.85$ & $3.076\pm0.276$ & $66$ \\
+ER & Retention-LPA & $0.10$ & $0.316\pm0.014$ & $216$ \\
+ER & FLPA FIFO & $0.85$ & $2.095\pm0.222$ & $146$ \\
+ER & Leiden & $1.55$ & $6.143\pm0.642$ & $296$ \\
+BA & LPA & $0.75$ & $3.606\pm1.471$ & $381$ \\
+BA & Retention-LPA & $0.15$ & $1.166\pm0.404$ & $677$ \\
+BA & FLPA FIFO & $0.35$ & $2.544\pm0.669$ & $627$ \\
+BA & Leiden & $1.80$ & $16.328\pm2.721$ & $807$ \\
+SBM & LPA & $1.75$ & $8.446\pm2.480$ & $383$ \\
+SBM & Retention-LPA & $0.15$ & $1.288\pm0.349$ & $758$ \\
+SBM & FLPA FIFO & $0.80$ & $6.474\pm2.448$ & $709$ \\
+SBM & Leiden & $1.25$ & $14.978\pm3.400$ & $1098$ \\
+\bottomrule
+\end{tabular}}
+\newcommand{\AuthorTable}{%
+\begin{tabular}{llrrrr}
+\toprule
+Họ & Thuật toán & Cặp & C (s) & Python (s) & $\Delta$ (\%) \\
+\midrule
+BA & FLPA FIFO & 3 & $0.381\pm0.069$ & $4.923\pm2.335$ & $1193$ \\
+BA & LPA & 3 & $0.953\pm0.096$ & $8.116\pm4.586$ & $752$ \\
+BA & Retention-LPA & 3 & $0.180\pm0.041$ & $1.855\pm0.555$ & $932$ \\
+ER & FLPA FIFO & 3 & $1.397\pm0.335$ & $6.269\pm0.536$ & $349$ \\
+ER & LPA & 3 & $2.767\pm0.272$ & $8.351\pm0.826$ & $202$ \\
+ER & Retention-LPA & 3 & $0.160\pm0.012$ & $0.804\pm0.144$ & $403$ \\
+SBM & FLPA FIFO & 3 & $1.108\pm0.178$ & $20.008\pm2.050$ & $1706$ \\
+SBM & LPA & 3 & $2.643\pm0.141$ & $34.021\pm13.910$ & $1187$ \\
+SBM & Retention-LPA & 3 & $0.170\pm0.011$ & $3.438\pm1.372$ & $1921$ \\
+\bottomrule
+\end{tabular}}

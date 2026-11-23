@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "plan": {
+    "experiment_id": "e3",
+    "experiment_type": "ablation",
+    "profile": "pilot",
+    "algorithms": [
+      "flpa",
+      "flpa_lifo",
+      "flpa_all"
+    ],
+    "cases": [
+      {
+        "case_id": "sbm-5000-d10-mu0.3",
+        "dataset": "sbm",
+        "n_nodes": 5000,
+        "average_degree": 10,
+        "mixing_mu": 0.3,
+        "n_communities": 100
+      },
+      {
+        "case_id": "sbm-5000-d10-mu0.45",
+        "dataset": "sbm",
+        "n_nodes": 5000,
+        "average_degree": 10,
+        "mixing_mu": 0.45,
+        "n_communities": 100
+      },
+      {
+        "case_id": "sbm-5000-d10-mu0.6",
+        "dataset": "sbm",
+        "n_nodes": 5000,
+        "average_degree": 10,
+        "mixing_mu": 0.6,
+        "n_communities": 100
+      }
+    ],
+    "seed_pairs": [
+      [
+        41001,
+        51001
+      ],
+      [
+        41002,
+        51002
+      ],
+      [
+        41003,
+        51003
+      ]
+    ],
+    "timeout_seconds": 30
+  },
+  "environment": {
+    "utc_time": "2026-11-23T12:15:23.470634+00:00",
+    "os": "macOS-14.6.1-arm64-arm-64bit",
+    "arch": "arm64",
+    "logical_cpus": 8,
+    "cpu_model": "Apple M1",
+    "memory_bytes": "8589934592",
+    "thread_environment": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1"
+    },
+    "python": "3.12.15",
+    "packages": {
+      "numpy": "2.0.2",
+      "scipy": "1.13.1",
+      "scikit-learn": "1.6.1",
+      "networkx": "3.2.1",
+      "pandas": "2.2.3",
+      "igraph": "0.11.9",
+      "leidenalg": "0.10.2",
+      "matplotlib": "3.9.4",
+      "marimo": "0.13.15",
+      "wandb": "0.19.11"
+    },
+    "source_commit": "9fd916a4a284bed17618f0006064a49b8a157447",
+    "source_changes": ""
+  },
+  "counts": {
+    "ok": 27
+  },
+  "sha256": {
+    "figures/ablation.pdf": "27748d8c6f968ab2b1ee6fedd6b4635fa7672f3f8c998f1296aed786f27b5317",
+    "figures/ablation.png": "09021cedda96edd043e67129955f03113ccf06187cf3c348daa5a00e05bf5fdd",
+    "paired.csv": "b48717e88b5cd8f98f1b5d3c54c4efa09fc84fe050d1f492db5a244e325ef603",
+    "raw.csv": "67540bec538d32d584477ecf113376f74ff458a7e5e53f8795a6d233b3979576",
+    "summary.csv": "455f642af4caa68eda878a71f9b3bcc3bfe0d814bf0f1c3b892c04cf959c0a31"
+  }
+}

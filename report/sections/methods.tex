@@ -1,0 +1,117 @@
+\section{Phương pháp}
+\label{sec:methods}
+
+\subsection{Ký hiệu và quy tắc đa số}
+
+Xét đồ thị vô hướng đơn $G=(V,E)$ với $n=|V|$ đỉnh và $m=|E|$ cạnh. Gọi $A_{uv}$ là chỉ báo có cạnh $\{u,v\}\in E$, $N(v)=\{u\mid A_{uv}=1\}$ là tập láng giềng, $d_v=|N(v)|$ là bậc. Thực nghiệm dùng $A_{uv}\in\{0,1\}$. Bài báo trình bày tổng quát cho đa đồ thị bằng số cạnh giữa hai đỉnh. Gọi $c_v$ là nhãn hiện tại của đỉnh $v$ và $\mathbf{c}=(c_v)_{v\in V}$ là vector nhãn. Một phân hoạch gồm các tập đỉnh có cùng nhãn. Đặt $\mathbf{1}[P]=1$ khi mệnh đề $P$ đúng và bằng 0 ở trường hợp còn lại. Điểm của nhãn $a$ tại $v$ là
+\begin{equation}
+  f_v(a;\mathbf{c})=\sum_{u\in N(v)}\mathbf{1}[c_u=a].
+  \label{eq:vote}
+\end{equation}
+Với $d_v>0$, tập ứng viên $M_v(\mathbf{c})$ gồm các nhãn láng giềng đạt điểm cao nhất.
+\begin{equation}
+ M_v(\mathbf{c})=\operatorname*{arg\,max}_{a\in \{c_u:u\in N(v)\}} f_v(a;\mathbf{c}).
+ \label{eq:maximal}
+\end{equation}
+Nhãn $c_v$ được gọi là cực đại (maximal) nếu $c_v\in M_v(\mathbf{c})$. Cực đại có thể là một mức hoà, kể cả khi nhãn đang giữ chiếm ít hơn một nửa láng giềng. Đỉnh cô lập được giữ nhãn riêng. Từ đây, các phát biểu maximality áp dụng cho đỉnh có bậc dương.
+
+Để hiểu ý nghĩa của cập nhật, xét $H$, số cạnh có hai đầu cùng nhãn. Khi một đỉnh $v$ chuyển từ $a$ sang $b$, các cạnh có khả năng đổi trạng thái đều kề $v$. Không có self-loop nên thay đổi tính được từ điểm trước cập nhật.
+\begin{equation}
+ \begin{split}
+ H(\mathbf{c}) &= \sum_{\{u,v\}\in E}\mathbf{1}[c_u=c_v],\\
+ \Delta H &= f_v(b;\mathbf{c})-f_v(a;\mathbf{c}).
+ \end{split}
+ \label{eq:potential}
+\end{equation}
+Quy tắc đa số giữ $\Delta H\ge0$. Gán cùng nhãn cho mọi đỉnh đạt $H=m$, vì vậy chỉ tối đa hoá $H$ có thể dẫn tới nghiệm tầm thường~\cite{tibely}. Các thuật toán tìm nghiệm ổn định theo từng cập nhật đỉnh. Cấu trúc, thứ tự và cách phá hoà quyết định nghiệm cục bộ nào xuất hiện.
+
+\begin{figure*}[t]
+\centering
+\begin{tikzpicture}[node distance=5.5mm, font=\small,
+  block/.style={draw, rounded corners, align=center, minimum height=10mm, text width=22mm},
+  flow/.style={-{Stealth[length=2mm]}, semithick}]
+\node[block] (graph) {Danh sách cạnh\\vô hướng};
+\node[block,right=of graph] (init) {Danh sách kề\\nhãn riêng};
+\node[block,right=of init] (order) {Quét đỉnh hoặc\\lấy từ hàng đợi};
+\node[block,right=of order] (vote) {Tính điểm nhãn\\và cập nhật};
+\node[block,right=of vote] (stop) {Kiểm tra\\điều kiện dừng};
+\node[block,right=of stop] (out) {Vector nhãn\\phân hoạch};
+\draw[flow] (graph)--(init);
+\draw[flow] (init)--(order);
+\draw[flow] (order)--(vote);
+\draw[flow] (vote)--(stop);
+\draw[flow] (stop)--(out);
+\draw[flow] (stop.south) -- ++(0,-5mm) -| node[pos=.22, below, font=\scriptsize] {còn đỉnh cần xử lý} (order.south);
+\end{tikzpicture}
+\caption{Luồng phát hiện cộng đồng. Nhãn gốc của SBM được giữ riêng để chấm điểm sau bước phát hiện.}
+\label{fig:pipeline}
+\end{figure*}
+
+\subsection{LPA và chiến lược giữ nhãn}
+
+Hình~\ref{fig:pipeline} trình bày luồng chung. Mã giả ở Hình~\ref{fig:sweeps} dùng danh sách kề chuẩn hoá và một RNG cục bộ. Với LPA, mỗi lượt dùng xáo trộn đều các đỉnh. Khi xét $v$, chương trình đếm láng giềng theo nhãn hiện thời, kể cả kết quả mới trong cùng lượt quét. Nhãn được bốc đều trong $M_v$ bất kể nhãn cũ có nằm trong tập này. Sau lượt cập nhật, chương trình kiểm tra maximality và có thể kết thúc kiểm tra sớm tại đỉnh vi phạm đầu tiên. Do vậy số lượt kiểm tra ghi nhận có thể thấp hơn $n$ ở một vòng chưa hội tụ.
+
+Retention-LPA giữ nhãn nếu $c_v\in M_v$. Nếu đổi, $\Delta H>0$ theo~\eqref{eq:potential}. Số lượt đổi nghiêm ngặt hữu hạn vì $H\le m$. Nếu quét một lượt mà không đổi nhãn, mỗi đỉnh đã được kiểm tra dưới đúng vector nhãn cuối, nên các nhãn đều maximal. Trong LPA, chuyển giữa hai nhãn cực đại có thể giữ nguyên $H$, và lập luận hữu hạn theo mức tăng nghiêm ngặt chỉ áp dụng cho retention.
+
+\begin{figure}[!t]
+\footnotesize
+\begin{algorithmic}[1]
+  \Require Đồ thị $G$, cờ $r$ giữ nhãn, seed
+  \State $c_v\gets v$ với mọi $v\in V$
+  \Repeat
+    \State $\textit{changed}\gets\textbf{false}$
+    \For{$v$ trong hoán vị ngẫu nhiên của $V$}
+      \If{$d_v>0$ và $(\neg r \text{ hoặc } c_v\notin M_v)$}
+        \State Bốc đều $b\in M_v$ theo nhãn hiện tại
+        \State $\textit{changed}\gets\textit{changed}\lor(b\ne c_v)$
+        \State $c_v\gets b$
+      \EndIf
+    \EndFor
+  \Until{($r$ và không đổi) hoặc ($\neg r$ và mọi nhãn maximal)}
+  \State \Return $\mathbf{c}$
+\end{algorithmic}
+\caption{LPA và Retention-LPA theo mô tả của Algorithms~1–2~\cite{flpa}.}
+\label{fig:sweeps}
+\end{figure}
+
+\subsection{FLPA và bảo đảm cực đại}
+
+FLPA thay lịch quét bằng hàng đợi FIFO (first in, first out). Ban đầu mọi đỉnh có mặt đúng một lần, theo một hoán vị ngẫu nhiên. Khi lấy $v$ ra, thuật toán bốc từ $M_v$ như LPA. Nếu $v$ đổi sang $b$, cần kiểm tra lại các láng giềng chưa chờ xử lý và đang mang nhãn khác $b$. Các láng giềng khác có thêm một phiếu cho nhãn đang giữ. `deque` phục vụ thêm và lấy ở hai đầu. Mảng cờ theo ID kiểm tra một đỉnh đã xếp hàng trong thời gian hằng số. Hình~\ref{fig:queue} trình bày mã giả tự diễn giải và thao tác đưa lại.
+
+Xét bất biến mỗi đỉnh nằm ngoài hàng đợi đang giữ một nhãn maximal. Ban đầu điều kiện đúng vì mọi đỉnh đều chờ. Sau một thao tác lấy và xử lý $v$, chính $v$ đã có nhãn maximal theo láng giềng hiện tại. Nếu nhãn $v$ giữ nguyên, các đỉnh còn lại thấy đúng các phiếu cũ. Nếu nhãn $v$ đổi sang $b$, mỗi láng giềng ở ngoài hàng đợi hoặc được đưa vào, hoặc đang mang $b$. Với nhóm thứ hai, $f_u(b;\mathbf{c})$ tăng một và các đối thủ có điểm giữ nguyên hoặc giảm. Nếu $b$ là nhãn maximal trước thay đổi, nó vẫn maximal sau đó. Các đỉnh không kề $v$ giữ điểm cũ. Bất biến được bảo toàn. Khi hàng đợi rỗng, cả đồ thị thoả điều kiện. Lập luận cũng áp dụng cho LIFO và enqueue-all nếu lịch xử lý đi đến hàng đợi rỗng.
+
+\begin{figure}[!t]
+\footnotesize
+\begin{algorithmic}[1]
+  \Require Đồ thị $G$ và seed
+  \State $c_v\gets v$ với mọi $v\in V$
+  \State $Q\gets$ hoán vị ngẫu nhiên của $V$
+  \While{$Q\ne\varnothing$}
+    \State Lấy $v$ từ đầu $Q$ và xoá cờ chờ của $v$
+    \If{$d_v>0$}
+      \State Bốc đều $b\in M_v$
+      \If{$c_v\ne b$}
+        \State $c_v\gets b$
+        \For{$u\in N(v)$, $u\notin Q$ và $c_u\ne b$}
+          \State Thêm $u$ vào cuối $Q$ và đặt cờ chờ
+        \EndFor
+      \EndIf
+    \EndIf
+  \EndWhile
+  \State \Return $\mathbf{c}$
+\end{algorithmic}
+\caption{FLPA FIFO theo Algorithm~3~\cite{flpa}. LIFO thay thao tác lấy đầu bằng lấy cuối. Enqueue-all bỏ điều kiện $c_u\ne b$.}
+\label{fig:queue}
+\end{figure}
+
+Ví dụ, xét đường ba đỉnh $u$–$v$–$w$ và lịch xét $u$ trước $v$. Sau khi $u$ lấy nhãn $v$, láng giềng của $v$ có hai nhãn hoà. Retention-LPA giữ nhãn của $v$, còn LPA và FLPA có thể bốc nhãn của $w$. Nếu $v$ đổi, $u$ cần được đánh giá lại. FLPA đưa riêng $u$ vào hàng đợi khi $u$ ở ngoài, còn LPA phát hiện vi phạm và có thể chạy một lượt quét mới. Trên đồ thị thưa lớn, số đỉnh bị tác động sau một thay đổi thường nhỏ so với kích thước mạng.
+
+\subsection{Chi phí tính toán}
+Với bảng đếm hash, tính~\eqref{eq:vote} và chọn nhãn tối đa có chi phí kỳ vọng $O(1+d_v)$. Vì $\sum_v d_v=2m$, một lượt quét và kiểm tra đầy đủ tốn $O(n+m)$. Khi mọi đỉnh đều có bậc dương, có thể viết $O(m)$ như bài báo. Gọi $t$ là số lượt quét đến lúc dừng. LPA và Retention-LPA có giới hạn theo công việc $O(t(n+m))$, với LPA thêm các lượt kiểm tra mà công thức đã tính chung theo hằng số. Giá trị $t$ phụ thuộc vào cấu trúc đồ thị và RNG. Quét kiểm tra riêng của LPA có thể tốn một lượt đầy đủ dù bộ đếm thay đổi nhãn đã thấp.
+
+Gọi $W$ là số lần lấy đỉnh từ hàng đợi, $v_j$ là đỉnh lấy ở lượt $j$, $D$ là tập chỉ số lượt thực sự đổi nhãn. Chi phí kỳ vọng của FLPA theo trace là
+\begin{equation}
+ O\!\left(n+\sum_{j=1}^{W}(1+d_{v_j})+\sum_{j\in D}d_{v_j}\right).
+ \label{eq:queuecost}
+\end{equation}
+Tổng thứ hai quét lại láng giềng để đánh dấu đỉnh cần xử lý. Vì một đỉnh có thể trở lại nhiều lần, số lần xử lý và việc ghé các hub phải được đo để lý giải runtime. Mỗi thuật toán dùng $O(n+m)$ cho danh sách kề, $O(n)$ cho nhãn, thứ tự hoặc hàng đợi, và bảng điểm tạm tối đa $O(\max_v d_v)$. Sau chuẩn hoá, tất cả dùng chung một dạng biểu diễn. Số bộ đếm trong mã phản ánh các số hạng khác nhau của~\eqref{eq:queuecost}.
